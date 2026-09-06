@@ -100,7 +100,7 @@
             bottom: 45px;
             left: 50%;
             transform: translateX(-50%);
-            width: 340px;
+            width: 360px;
             height: 25px;
             background: #5c4a3b;
             border-radius: 6px;
@@ -120,9 +120,9 @@
         }
 
         .plant {
-            left: 20px;
-            width: 35px;
-            height: 42px;
+            left: 15px;
+            width: 30px;
+            height: 40px;
             background: #475569;
             border-radius: 0 0 8px 8px;
             display: flex;
@@ -133,13 +133,23 @@
         .plant-leaves {
             position: absolute;
             bottom: 28px;
+            font-size: 22px;
+        }
+
+        .parrot {
+            left: 55px;
+            width: 30px;
+            height: 40px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
             font-size: 24px;
         }
 
         .laptop {
-            left: 110px;
-            width: 100px;
-            height: 60px;
+            left: 95px;
+            width: 90px;
+            height: 55px;
             background: #a3a3a3;
             border-radius: 5px 5px 0 0;
             border: 3px solid #737373;
@@ -152,7 +162,7 @@
             content: '';
             position: absolute;
             bottom: -7px;
-            width: 116px;
+            width: 104px;
             height: 7px;
             background: #8c8c8c;
             border-radius: 0 0 5px 5px;
@@ -160,14 +170,14 @@
         }
 
         .laptop-screen {
-            width: 82px;
-            height: 42px;
+            width: 74px;
+            height: 38px;
             background: #0f172a;
             border-radius: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 11px;
             color: #38bdf8;
             font-family: monospace;
             font-weight: bold;
@@ -175,9 +185,9 @@
         }
 
         .mug {
-            right: 25px;
-            width: 30px;
-            height: 35px;
+            right: 15px;
+            width: 28px;
+            height: 32px;
             background: #d97706;
             border-radius: 0 0 6px 6px;
         }
@@ -185,10 +195,10 @@
         .mug::before {
             content: '';
             position: absolute;
-            right: -8px;
-            top: 7px;
-            width: 10px;
-            height: 15px;
+            right: -7px;
+            top: 6px;
+            width: 9px;
+            height: 13px;
             border: 3px solid #d97706;
             border-left: none;
             border-radius: 0 6px 6px 0;
@@ -246,6 +256,10 @@
             <div class="plant-leaves">🌱</div>
         </div>
 
+        <div class="item parrot" onclick="interact('parrot')" title="Parrot">
+            🦜
+        </div>
+
         <div class="item laptop" onclick="interact('laptop')">
             <div class="laptop-screen">arwa</div>
         </div>
@@ -283,6 +297,9 @@
         }
 
         const messages = {
+            parrot: [
+                "YOU GOT THIS ARWA!"
+            ],
             laptop: [
                 "At least in computer science, if your code fails you just hit Ctrl+Z instead of accidentally ending up in a malpractice lawsuit.",
                 "Arwa, you actually have full control over your sanity here. No gross anatomy labs at 8 AM, just pure logic and your own setup.",

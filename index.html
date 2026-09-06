@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Cozy Little Corner for Arwa</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1e1b24;
+            color: #f3f0ea;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .room-container {
+            position: relative;
+            width: 800px;
+            max-width: 95vw;
+            height: 500px;
+            background: linear-gradient(135deg, #2c2837 0%, #1f1b24 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 2px solid #3d364a;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 40px;
+        }
+
+        .window {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            width: 150px;
+            height: 200px;
+            background: #121017;
+            border: 6px solid #4a415a;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .window:hover {
+            transform: scale(1.02);
+        }
+
+        .stars {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #2d263b 0%, #121017 100%);
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .desk {
+            position: relative;
+            width: 700px;
+            height: 30px;
+            background: #5c4a3b;
+            border-radius: 6px;
+            box-shadow: 0 10px 0 #3b2f25;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+
+        .item {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s, filter 0.2s;
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+            filter: brightness(1.2);
+        }
+
+        .laptop {
+            bottom: 30px;
+            left: 280px;
+            width: 120px;
+            height: 70px;
+            background: #a3a3a3;
+            border-radius: 6px 6px 0 0;
+            border: 3px solid #737373;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .laptop::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            width: 140px;
+            height: 8px;
+            background: #8c8c8c;
+            border-radius: 0 0 6px 6px;
+            left: -13px;
+        }
+
+        .laptop-screen {
+            width: 100px;
+            height: 50px;
+            background: #0f172a;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: #38bdf8;
+            font-family: monospace;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .mug {
+            bottom: 30px;
+            right: 180px;
+            width: 35px;
+            height: 40px;
+            background: #d97706;
+            border-radius: 0 0 8px 8px;
+            position: absolute;
+        }
+
+        .mug::before {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 8px;
+            width: 12px;
+            height: 18px;
+            border: 3px solid #d97706;
+            border-left: none;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .plant {
+            bottom: 30px;
+            left: 80px;
+            width: 40px;
+            height: 50px;
+            background: #475569;
+            border-radius: 0 0 10px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .plant-leaves {
+            position: absolute;
+            bottom: 35px;
+            font-size: 28px;
+        }
+
+        .frame {
+            position: absolute;
+            top: 60px;
+            right: 100px;
+            width: 70px;
+            height: 90px;
+            background: #e2e8f0;
+            border: 5px solid #78350f;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .frame:hover {
+            transform: scale(1.05);
+        }
+
+        .message-box {
+            margin-top: 25px;
+            width: 600px;
+            max-width: 90vw;
+            min-height: 80px;
+            background: #2d263b;
+            border: 2px solid #5d5070;
+            border-radius: 12px;
+            padding: 15px 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .message-box p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #e2e8f0;
+            transition: opacity 0.15s ease;
+        }
+
+        .hint {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="room-container">
+        <div class="window" onclick="interact('window')">
+            <div class="stars">
+                <div class="star" style="top: 30px; left: 40px; width: 3px; height: 3px;"></div>
+                <div class="star" style="top: 80px; left: 100px; width: 2px; height: 2px;"></div>
+                <div class="star" style="top: 130px; left: 60px; width: 4px; height: 4px;"></div>
+                <div class="star" style="top: 160px; left: 120px; width: 2px; height: 2px;"></div>
+            </div>
+        </div>
+
+        <div class="frame" onclick="interact('frame')" title="Click me">
+            ⭐
+        </div>
+
+        <div class="desk">
+            <div class="item plant" onclick="interact('plant')">
+                <div class="plant-leaves">🌱</div>
+            </div>
+
+            <div class="item laptop" onclick="interact('laptop')">
+                <div class="laptop-screen">arwa</div>
+            </div>
+
+            <div class="item mug" onclick="interact('mug')" title="Warm drink"></div>
+        </div>
+    </div>
+
+    <div class="message-box">
+        <p id="main-text">Hey Arwa. Take a deep breath, click around the room whenever you need a little reminder of how capable you are.</p>
+    </div>
+    <div class="hint">✨ Click anything in the room ✨</div>
+
+    <script>
+        function playClickSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(580, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.08);
+                
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+                
+                osc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
+            } catch (e) {
+                // AudioContext blocked or not supported
+            }
+        }
+
+        const messages = {
+            laptop: [
+                "At least in computer science, if your code fails you just hit Ctrl+Z instead of accidentally ending up in a malpractice lawsuit.",
+                "Arwa, you actually have full control over your sanity here. No gross anatomy labs at 8 AM, just pure logic and your own setup.",
+                "Think about how cool it is that you can build literally anything you imagine from a laptop screen. You are setting yourself up for an amazing future."
+            ],
+            plant: [
+                "Two weeks into faculty life is always chaotic. Everything is new, everyone looks lost, and you are just trying to figure out where your lectures are. Give yourself permission to not have it all figured out right now.",
+                "You survived Thanaweya Amma. Let that sink in. You went through the ultimate Egyptian academic gauntlet and came out on top, so this new chapter is entirely manageable for you.",
+                "It is okay to feel nervous. Big changes feel scary because you care about doing well, but you are more than capable of handling this transition."
+            ],
+            mug: [
+                "Mandatory water and sanity check. Put the overthinking down for five minutes, roll your shoulders back, and relax.",
+                "Seriously, go grab something to drink. The tanseeq stress can wait; your peace of mind comes first."
+            ],
+            window: [
+                "Look outside for a second. The world did not end because you skipped med school. Your life is yours to shape, and you chose a path that gives you actual time to breathe and live.",
+                "Step by step, day by day. You do not need to have your entire career mapped out this month. Just focus on getting through today comfortably."
+            ],
+            frame: [
+                "Arwa, you earned those high grades through sheer hard work and late nights. That brilliant brain of yours is going to shine wherever you put it.",
+                "Choosing computer science over med school was not backing down from a challenge. It was a smart, conscious choice to protect your mental health and your future. Be proud of that."
+            ]
+        };
+
+        function interact(category) {
+            playClickSound();
+            const categoryMessages = messages[category];
+            const randomIndex = Math.floor(Math.random() * categoryMessages.length);
+            const textElement = document.getElementById('main-text');
+            
+            textElement.style.opacity = 0;
+            setTimeout(() => {
+                textElement.innerText = categoryMessages[randomIndex];
+                textElement.style.opacity = 1;
+            }, 150);
+        }
+    </script>
+</body>
+</html>
